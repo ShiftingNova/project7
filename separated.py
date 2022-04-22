@@ -20,6 +20,8 @@ def separate_by_commas(string):
                 group = group + char
     if group != "":
         results.append(group)
+    if "," == string[len(string)-1]:
+        results.append("")
     return results
 def create_comma_separated_string(list_of_strings):
     '''
@@ -65,7 +67,8 @@ def list_of_lists_to_csv_file(filename, list_of_lists):
     file = open(filename,"w")
     for list in list_of_lists:
         file.write(create_comma_separated_string(list))
-        file.write("\n")
+        if list != list_of_lists[len(list_of_lists)-1]:
+            file.write("\n")
         lines = lines + 1
     return lines
 def csv_file_to_list_of_dictionaries(filename):
@@ -84,8 +87,9 @@ def csv_file_to_list_of_dictionaries(filename):
         line = temp2.split(",")
         dict = {}
         for endex in range(len(line)):
-            key = keys[endex]
-            dict[key] = line[endex]
+            if endex < len(keys):
+                key = keys[endex]
+                dict[key] = line[endex]
         results.append(dict)
     return results
 def list_of_dictionaries_to_csv_file(filename, list_of_dictionaries):
@@ -119,6 +123,7 @@ def list_of_dictionaries_to_csv_file(filename, list_of_dictionaries):
             line = line + dictionary[key]
             if key != keys[len(keys)-1]:
                 line = line + ","
-        file.write(line+"\n")
+        if dictionary != list_of_dictionaries[len(list_of_dictionaries)-1]:
+            file.write(line+"\n")
         lines = lines + 1
     return lines

@@ -1,6 +1,6 @@
 def separate_by_commas(string):
     '''
-    This function takes in a string variable called 'string' The function takes the string and
+    This function takes in a string argument called 'string' The function takes the string and
     splits it at the commas. It also ignores commas if they are surrounded by "".
     It returns a list created when the string is split.
 
@@ -25,7 +25,7 @@ def separate_by_commas(string):
     return results
 def create_comma_separated_string(list_of_strings):
     '''
-    This function takes in a list of strings called "list_of_strings". It takes the list
+    This function takes in a list of strings as an argument called "list_of_strings". It takes the list
     and puts it into one string and seperates the index's with a comma. It returns this string.
 
     '''
@@ -42,7 +42,7 @@ def create_comma_separated_string(list_of_strings):
     return results
 def csv_file_to_list_of_lists(filename):
     '''
-    This functions reads each line of of a csv file and returns a list in a list.
+    This functions reads each line of of a csv file argument and returns a list in a list.
     where each inner list is based off of each line in the csv file. It breaks up the string
     by the seperate_by_commas function. It returns this 2d list
     '''
@@ -57,7 +57,7 @@ def csv_file_to_list_of_lists(filename):
     return results
 def list_of_lists_to_csv_file(filename, list_of_lists):
     '''
-    This function takes a list of lists called 'list_of_lists' and creates a csv file based on the lists
+    This function takes a list of lists called 'list_of_lists' argument and creates a csv file based on the lists
     This is done by writing to the csv file using each inner list for each line.
     Each inner list is turned into a string beforehand using the'create_comma_seperated_string' function
     It counts how many times a line is written in an interger called 'lines'
@@ -72,7 +72,7 @@ def list_of_lists_to_csv_file(filename, list_of_lists):
     return lines
 def csv_file_to_list_of_dictionaries(filename):
     '''
-    This function takes in a file name. It reads this file and creates a list of dictionaries called 'results'
+    This function takes in a file name argument and It reads this file and creates a list of dictionaries called 'results'
     The first line of the file sets the keys n the dictionaries. each line is then placed in the dictionaries
     in the same order as the keys. This function returns results
     '''
@@ -93,7 +93,7 @@ def csv_file_to_list_of_dictionaries(filename):
     return results
 def list_of_dictionaries_to_csv_file(filename, list_of_dictionaries):
     '''
-    This function takes a list of dictionaries called 'list_of_dictionaries'
+    This function takes a list of dictionaries argument called 'list_of_dictionaries'
     It then uses the dictionaries to write to a csv file from the parameter 'filename'
     it takes the keys and writes it into the first line of the csv file.
     Then it uses each dictionary to write each line.

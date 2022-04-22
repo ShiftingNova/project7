@@ -3,7 +3,6 @@ def separate_by_commas(string):
     This function takes in a string argument called 'string' The function takes the string and
     splits it at the commas. It also ignores commas if they are surrounded by "".
     It returns a list created when the string is split.
-
     '''
     results = []
     group = ""
@@ -21,7 +20,6 @@ def separate_by_commas(string):
                 group = group + char
     if group != "":
         results.append(group)
-    print(results)
     return results
 def create_comma_separated_string(list_of_strings):
     '''
@@ -30,15 +28,16 @@ def create_comma_separated_string(list_of_strings):
 
     '''
     results = ""
-    for index in list_of_strings:
-        if results != "":
-            results = results + ","
-        if len(index) > 1:
+    for index in range(len(list_of_strings)):
+        string = list_of_strings[index]
+        if len(string) > 1:
             results = results + '"'
-            results = results + index
+            results = results + string
             results = results + '"'
         else:
-            results = results + index
+            results = results + string
+        if index != len(list_of_strings)-1:
+            results = results + ","
     return results
 def csv_file_to_list_of_lists(filename):
     '''
@@ -51,9 +50,8 @@ def csv_file_to_list_of_lists(filename):
     file = open(filename,"r")
     for index in range(count):
         line = [file.readline().replace("\n","")]
-        results.append(line)
+        results.append(separate_by_commas(line))
         #results.append(file.readline().split("\n"))
-    print(results)
     return results
 def list_of_lists_to_csv_file(filename, list_of_lists):
     '''
@@ -81,7 +79,6 @@ def csv_file_to_list_of_dictionaries(filename):
     file = open(filename,'r')
     temp = file.readline().replace("\n","")
     keys = temp.split(",")
-    print(keys[1])
     for index in range(1,count):
         temp2 = file.readline().replace("\n","")
         line = temp2.split(",")
@@ -112,6 +109,7 @@ def list_of_dictionaries_to_csv_file(filename, list_of_dictionaries):
             starting_line = starting_line + ","
     file.write(starting_line)
     file.write("\n")
+    lines = lines + 1
     for dictionary in list_of_dictionaries:
         line = ""
         keys = []
